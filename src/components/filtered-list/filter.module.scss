@@ -1,0 +1,22 @@
+.container {
+    .tableContainer {
+        border-collapse: collapse;
+        width: 100%;
+        margin-top: 1em;
+
+        tr {
+            font-family: 'Poppins', sans-serif;
+            text-align: left;
+            border-bottom: 1px solid rgb(219, 219, 219);
+
+            th {
+                padding-bottom: 1em;
+            }
+
+            td {
+                padding: 1em;
+                padding-left: 0;
+            }
+        }
+    }
+}

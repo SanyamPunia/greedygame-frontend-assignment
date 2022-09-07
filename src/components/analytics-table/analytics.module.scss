@@ -1,0 +1,43 @@
+.container {
+    .title {
+        font-family: 'Poppins', sans-serif;
+        color: rgb(49, 49, 49);
+        margin-top: 1.5rem;
+    }
+
+    .searchInput {
+        margin: 1em 0;
+        outline: none;
+        padding: 0.3em 1em;
+        font-size: 1em;
+        font-family: 'Poppins', sans-serif;
+        border-radius: 3px;
+        border: 0.1rem solid rgb(189, 189, 189);
+        transition: 0.2s all ease;
+
+        &:focus {
+            border: 0.1rem solid rgb(92, 92, 92);
+        }
+    }
+
+    .tableContainer {
+        border-collapse: collapse;
+        width: 100%;
+        margin-top: 1em;
+
+        tr {
+            font-family: 'Poppins', sans-serif;
+            text-align: left;
+            border-bottom: 1px solid rgb(219, 219, 219);
+
+            th {
+                padding-bottom: 1em;
+            }
+
+            td {
+                padding: 1em;
+                padding-left: 0;
+            }
+        }
+    }
+}
