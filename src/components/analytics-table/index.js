@@ -58,7 +58,7 @@ const AnalyticsTable = (props) => {
                 className={styles.searchInput}
                 type="search"
                 name="search"
-                placeholder="Search"
+                placeholder="Search by name"
                 onChange={(e) => setSearchTerm(e.target.value)}
             />
 

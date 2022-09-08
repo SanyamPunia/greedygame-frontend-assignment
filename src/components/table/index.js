@@ -2,11 +2,15 @@ import React from 'react'
 import styles from './table.module.scss'
 import { useContext } from 'react'
 import { MetricContext } from '../../context/Context'
+import appImage from '../../assets/app.png'
 
 const Table = (props) => {
     const results = props.results
     const games = props.games
     const tags = props.tags
+
+    console.log(tags)
+    console.log(results)
 
     const { metricData } = useContext(MetricContext)
 
@@ -24,7 +28,10 @@ const Table = (props) => {
                             {games.map((game, index) => (
                                 <>
                                     {result.app_id === game.app_id ? (
-                                        <td key={index}>{game.app_name}</td>
+                                        <td key={index} className={styles.appImage}>
+                                            <img src={appImage} alt="app_image" />
+                                            {game.app_name}
+                                        </td>
                                     ) : null}
                                 </>
                             ))}

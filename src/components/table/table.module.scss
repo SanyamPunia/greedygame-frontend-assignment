@@ -16,6 +16,22 @@
             td {
                 padding: 1em;
                 padding-left: 0;
+                cursor: context-menu;
+            }
+
+            .appImage {
+                display: flex;
+                align-items: center;
+                gap: 0.5em;
+
+                img {
+                    width: 25px;
+                    -webkit-user-drag: none;
+                    user-select: none;
+                    -moz-user-select: none;
+                    -webkit-user-select: none;
+                    -ms-user-select: none;
+                }
             }
         }
     }
