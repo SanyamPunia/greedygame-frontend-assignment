@@ -1,6 +1,7 @@
 import React, { useContext } from 'react'
 import styles from './filter.module.scss'
 import { MetricContext } from '../../context/Context'
+import appImage from '../../assets/app.png'
 
 const FilteredList = (props) => {
     const searchTerm = props.searchTerm
@@ -36,7 +37,21 @@ const FilteredList = (props) => {
                                                 {games.map((game, index) => (
                                                     <>
                                                         {result.app_id === game.app_id ? (
-                                                            <td key={index}>{game.app_name}</td>
+                                                            <>
+                                                                {metricData.map((tag, index) => (
+                                                                    <>
+                                                                        {tag.tagName === 'Name' && tag.visibleState ? (
+                                                                            <td key={index} className={styles.appImage}>
+                                                                                <img
+                                                                                    src={appImage}
+                                                                                    alt="app_image"
+                                                                                />
+                                                                                {game.app_name}
+                                                                            </td>
+                                                                        ) : null}
+                                                                    </>
+                                                                ))}
+                                                            </>
                                                         ) : null}
                                                     </>
                                                 ))}

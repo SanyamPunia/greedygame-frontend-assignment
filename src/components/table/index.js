@@ -28,10 +28,18 @@ const Table = (props) => {
                             {games.map((game, index) => (
                                 <>
                                     {result.app_id === game.app_id ? (
-                                        <td key={index} className={styles.appImage}>
-                                            <img src={appImage} alt="app_image" />
-                                            {game.app_name}
-                                        </td>
+                                        <>
+                                            {metricData.map((tag, index) => (
+                                                <>
+                                                    {tag.tagName === 'Name' && tag.visibleState ? (
+                                                        <td key={index} className={styles.appImage}>
+                                                            <img src={appImage} alt="app_image" />
+                                                            {game.app_name}
+                                                        </td>
+                                                    ) : null}
+                                                </>
+                                            ))}
+                                        </>
                                     ) : null}
                                 </>
                             ))}
