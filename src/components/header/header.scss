@@ -127,3 +127,14 @@
         }
     }
 }
+
+@media only screen and (max-width: 950px) {
+    .container {
+        margin: 3em;
+        .button-container {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 1em;
+        }
+    }
+}
