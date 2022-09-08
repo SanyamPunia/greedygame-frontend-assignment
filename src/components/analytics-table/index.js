@@ -1,7 +1,7 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import styles from './analytics.module.scss'
-import { MetricContext } from '../../context/Context'
 import FilteredList from '../filtered-list'
+import Table from '../table'
 
 const AnalyticsTable = (props) => {
     const tags = props.tags
@@ -9,8 +9,7 @@ const AnalyticsTable = (props) => {
     const [results, setResults] = useState([])
     const [games, setGames] = useState([])
     const [searchTerm, setSearchTerm] = useState('')
-    const { metricData } = useContext(MetricContext)
-
+    
     const sortingOrder = [
         'Name',
         'Date',
@@ -64,75 +63,7 @@ const AnalyticsTable = (props) => {
             />
 
             {!searchTerm ? (
-                <table className={styles.tableContainer}>
-                    <tr>
-                        {tags.map((tag, index) => (
-                            <th key={index}>{tag}</th>
-                        ))}
-                    </tr>
-                    {results?.data?.map((result, index) => (
-                        <tbody>
-                            <tr key={index}>
-                                {games.map((game, index) => (
-                                    <>
-                                        {result.app_id === game.app_id ? (
-                                            <td key={index}>{game.app_name}</td>
-                                        ) : null}
-                                    </>
-                                ))}
-                                {metricData.map((tag, index) =>
-                                    tag.tagName === 'Date' && tag.visibleState ? (
-                                        <td key={index}>{result.date}</td>
-                                    ) : null
-                                )}
-                                {metricData.map((tag, index) =>
-                                    tag.tagName === 'App' && tag.visibleState ? (
-                                        <td key={index}>{result.app_id}</td>
-                                    ) : null
-                                )}
-                                {metricData.map((tag, index) =>
-                                    tag.tagName === 'Clicks' && tag.visibleState ? (
-                                        <td key={index}>{result.clicks}</td>
-                                    ) : null
-                                )}
-                                {metricData.map((tag, index) =>
-                                    tag.tagName === 'Ad Requests' && tag.visibleState ? (
-                                        <td key={index}>{result.requests}</td>
-                                    ) : null
-                                )}
-                                {metricData.map((tag, index) =>
-                                    tag.tagName === 'Ad Response' && tag.visibleState ? (
-                                        <td key={index}>{result.responses}</td>
-                                    ) : null
-                                )}
-                                {metricData.map((tag, index) =>
-                                    tag.tagName === 'Impression' && tag.visibleState ? (
-                                        <td key={index}>{result.impressions}</td>
-                                    ) : null
-                                )}
-                                {metricData.map((tag, index) =>
-                                    tag.tagName === 'Revenue' && tag.visibleState ? (
-                                        <td key={index}>{result.revenue}</td>
-                                    ) : null
-                                )}
-                                {metricData.map((tag, index) =>
-                                    tag.tagName === 'Fill Rate' && tag.visibleState ? (
-                                        <td key={index}>
-                                            {(result.requests / result.responses) * 100}%
-                                        </td>
-                                    ) : null
-                                )}
-                                {metricData.map((tag, index) =>
-                                    tag.tagName === 'CTR' && tag.visibleState ? (
-                                        <td key={index}>
-                                            {(result.clicks / result.impressions) * 100}%
-                                        </td>
-                                    ) : null
-                                )}
-                            </tr>
-                        </tbody>
-                    ))}
-                </table>
+                <Table results={results} games={games} tags={tags} />
             ) : (
                 <FilteredList
                     searchTerm={searchTerm}
